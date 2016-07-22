@@ -1,2 +1,3 @@
 # C-PlusPlus
-Just for C++ learning.
+
+Trial test codes and ideas in this branch.
