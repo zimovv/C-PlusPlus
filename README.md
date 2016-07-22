@@ -1,2 +1,3 @@
 # C-PlusPlus
-Just for C++ learning.
+
+Try test codes and ideas in the repository.
