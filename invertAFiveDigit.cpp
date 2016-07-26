@@ -22,7 +22,10 @@ int main()
   }
   inverted_num=tmp_num;
   
-  cout<<original_num<<"is inverted to "<<inverted_num<<endl;
+  if(original_num==inverted_num)
+    cout<<original_num<<" is a palindromic number!"<<endl;
+  else
+    cout<<original_num<<" is inverted to "<<inverted_num<<endl;
   
   return 0;
 }
