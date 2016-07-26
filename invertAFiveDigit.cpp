@@ -5,18 +5,20 @@ using namespace std;
 int main()
 {
   int original_num,inverted_num,tmp_num;
-  int a[5];
+  int a[10]; //Size of max integer(unsigned int) is 10.
+  int original_num_length;
   
   cout<<"Input a five-digit number:"
   cin>>original_num;
   
-  for(i=0;i<5;i++)
+  original_num_length=sizeof(original_num);
+  for(i=0;i<original_num_length;i++)
   {
     a[i]=(original_num/pow(10,i))%10;
   }
   
   tmp_num=0;
-  for(i=0;i<5;i++)
+  for(i=0;i<original_num_length;i++)
   {
     tmp_num=tmp_num*10+a[i];
   }
