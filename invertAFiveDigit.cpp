@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 int main()
@@ -8,11 +9,10 @@ int main()
   
   cout<<"Input a five-digit number:"
   cin>>original_num;
-  tmp_num=original_num;
+  
   for(i=0;i<5;i++)
   {
-    a[i]=tmp_num%10;
-    tmp_num=tmp/10;
+    a[i]=(original_num/pow(10,i))%10;
   }
   
   tmp_num=0;
