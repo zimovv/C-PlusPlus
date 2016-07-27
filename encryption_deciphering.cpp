@@ -16,7 +16,19 @@ int encryption()
   plaintext_length=sizeof(plaintext);
   for(i=0;i<pliantext_length;i++)
   {
-    ciphertext[i]=plaintext[i]+k;
+    if('a'<=plaintext[i]<='z')
+    {
+        ciphertext[i]='a'+(plaintext[i]-'a'+k)%26;
+    }
+    else if('A'<=plaintext[i]<='Z')
+    {
+      
+      ciphertext[i]='A'+(plaintext[i]-'A'+k)%26;
+    }
+    else  //if palintext contains not only English letters.
+    {
+      ciphertext[i]=plaintext[i]+k;
+    }
   }
   cout<<"The ciphertext is \""<<ciphertext<<"\""<<end;
   
@@ -36,7 +48,19 @@ int deciphering()
   ciphertext_length=sizeof(ciphertext);
   for(i=0;i<ciphertext_length;i++)
   {
-    plaintext[i]=ciphertext[i]-k;
+    if('a'<=ciphertext<='z')
+    {
+      plaintext[i]='a'+(ciphertext[i]-'a'-k+26)%26;
+    }
+    else if('A'<=ciphertext<='Z')
+    {
+      plaintext[i]='A'+(ciphertext[i]-'a'-k+26)%26;
+    }
+    else  //if not english letters
+    {
+      plaintext[i]=ciphertext[i]-k;
+    }
+    
   }
   cout<<"The plaintext is \""<<plaintext<<"\""<<endl;
   return 0;
