@@ -1,10 +1,11 @@
 #include <iostream>
+#include <memory>
 using namespace std;
 
 class Singleton
 {
 public:
-    static Singleton * getInstance();
+    static shared_ptr<Singleton> getInstance();
     ~Singleton(){cout << "Destructing..." <<endl;}
 
 private:
@@ -12,15 +13,15 @@ private:
     Singleton(const Singleton&)=delete;
     Singleton& operator=(const Singleton&)=delete;
 
-    static Singleton * m_instance;
+    static shared_ptr<Singleton> m_instance;
 };
-Singleton * Singleton::m_instance = nullptr;
+shared_ptr<Singleton> Singleton::m_instance = nullptr;
 
-Singleton * Singleton::getInstance()
+shared_ptr<Singleton> Singleton::getInstance()
 {
     if(m_instance == nullptr)
     {
-        m_instance = new Singleton();
+        m_instance = shared_ptr<Singleton>(new Singleton());
     }
     return m_instance;
 }
@@ -33,8 +34,8 @@ public:
 
 int main()
 {
-    Singleton * s1 = Singleton::getInstance();
-    Singleton * s2 = Singleton::getInstance();
+    shared_ptr<Singleton> s1 = Singleton::getInstance();
+    shared_ptr<Singleton> s2 = Singleton::getInstance();
 
     //test if any way can create another instance
     //Singleton s3; //‘Singleton::Singleton()’ is private
@@ -44,7 +45,5 @@ int main()
 
     //DerivedS d; // not neccessary to create DerivedS object
 
-    delete s1;
-    //delete s2; //double free
     return 0;
 }
