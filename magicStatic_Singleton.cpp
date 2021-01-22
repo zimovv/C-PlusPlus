@@ -5,6 +5,7 @@
 
 #include <iostream>
 //#include <memory>
+#include <thread>
 using namespace std;
 
 class Singleton
@@ -24,15 +25,27 @@ Singleton& Singleton::getInstance()
     return m_instance;
 }
 
+void doSomething()
+{
+    Singleton& s = Singleton::getInstance();
+}
+
 int main()
 {
+    #if 0
     //Singleton s1;//‘Singleton::Singleton()’ is private
     Singleton & s2 = Singleton::getInstance();
     Singleton * s3 = &(Singleton::getInstance());
     //delete s3; //core dump:free(): invalid pointer: 0x00000000006021c8 ***
     Singleton & s4 = Singleton::getInstance();
-    
+
     //unique_ptr<Singleton> s5 = (unique_ptr<Singleton>)(&(Singleton::getInstance()));//core_dump:free(): invalid pointer: 0x00000000006021c8 ***
-    
+    #endif
+
+    thread t1(doSomething);
+    thread t2(doSomething);
+    t1.join();
+    t2.join();
+
     return 0;
 }
