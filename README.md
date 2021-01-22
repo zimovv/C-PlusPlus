@@ -1,3 +1,6 @@
 # C-PlusPlus
 
-Try test codes and ideas in the repository.
+compile command:
+g++ -std=c++11 singleton.cpp -lpthread
+
+-lpthread is opthional, it is for thread functionalities compile.
